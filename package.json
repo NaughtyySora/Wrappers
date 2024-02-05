@@ -1,0 +1,19 @@
+{
+  "name": "wrappers",
+  "version": "0.1.0",
+  "description": "JavaScript Wrappers",
+  "main": "main.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "wrappers",
+    "js",
+    "javascript"
+  ],
+  "author": "vladislav trofimenko",
+  "license": "ISC"
+}
