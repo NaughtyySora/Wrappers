@@ -1,14 +1,17 @@
 "use strict";
 
-const dir = "./lib";
-const ext = ".js";
-const keys = ["cancelable", "debounce", "limit", "memoize", "once", "throttle", "timeout"];
-const libs = {};
+const fs = require("node:fs");
+const path = require("node:path");
 
-for (const key of keys) {
-  const path = `${dir}/${key}${ext}`;
-  const resolved = require.resolve(path);
-  libs[key] = require(resolved);
-}
+const dir = "./lib";
+
+const files = fs.readdirSync(dir, { encoding: "utf8" });
+
+const libs = files.reduce((acc, file) => {
+  const { name } = path.parse(file);
+  const resolved = require.resolve(`${dir}/${file}`);
+  acc[name] = require(resolved);
+  return acc;
+}, {});
 
 module.exports = libs;
